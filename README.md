@@ -12,7 +12,9 @@ In your add composer.json file dependency under the policy "require":
 > Em seu arquivo compose.json adicione a dependência abaixo à diretiva "require":
 
 ```php
-    composer "igorwanbarros/php2html": "*"
+    "require": {
+        "igorwanbarros/php2html": "*"
+    }
 ```
 
 #Usage
