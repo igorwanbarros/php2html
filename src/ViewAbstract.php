@@ -47,6 +47,11 @@ abstract class ViewAbstract
      */
     protected $front = self::FRONT_BOOTSTRAP;
 
+    /**
+     * @var array
+     */
+    protected $attributes;
+
 
     /**
      * @return $this
@@ -57,6 +62,24 @@ abstract class ViewAbstract
         $class  = new \ReflectionClass(get_called_class());
 
         return $class->newInstanceArgs($args);
+    }
+
+
+    /**
+     * @param string $method
+     * @param array $arguments
+     *
+     * @return $this|mixed
+     */
+    public function __call($method, $arguments)
+    {
+        if ($this->_callSetAttributes($method, $arguments)) {
+            return $this;
+        }
+
+        if ($getAttributes = $this->_callGetAttributes($method)) {
+            return $getAttributes;
+        }
     }
 
 
@@ -207,5 +230,112 @@ abstract class ViewAbstract
         $this->front = $front;
 
         return $this;
+    }
+
+
+    /**
+     * @return array|string
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+
+    /**
+     * @param $key
+     *
+     * @return null
+     */
+    public function getAttribute($key)
+    {
+        return array_key_exists($key, $this->attributes) ? $this->attributes[$key] : null;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function renderAttributes()
+    {
+        $string = '';
+
+        if (is_array($this->attributes)) {
+            foreach ($this->attributes as $key => $value) {
+                $string .= " $key=\"$value\"";
+            }
+        }
+
+        return $string;
+    }
+
+
+    /**
+     * @param $attributes
+     *
+     * @return $this
+     */
+    public function setAttributes($attributes)
+    {
+        $this->attributes = $attributes;
+
+        return $this;
+    }
+
+
+    /**
+     * @param string|array  $key
+     * @param string|null   $value
+     *
+     * @return $this
+     */
+    public function addAttribute($key, $value = null)
+    {
+        if (is_array($key)) {
+            return $this->setAttributes($key);
+        }
+
+        $this->attributes[Helpers::camelCase($key)] = $value;
+
+        return $this;
+    }
+
+
+
+    private function _callGetAttributes($method)
+    {
+        $key = Helpers::camelCase(str_replace(['get', 'attribute', 'Attribute'], '', $method));
+        $method = strtolower($method);
+
+        if (strpos($method, 'attribute') === false &&
+            strpos($method, 'get') === false) {
+            return false;
+        }
+
+
+        if (!array_key_exists($key, $this->attributes)) {
+            return false;
+        }
+
+        return $this->attributes[$key];
+    }
+
+
+    private function _callSetAttributes($method, $arguments)
+    {
+        $key = str_replace(['set', 'attribute', 'Attribute'], '', $method);
+        $method = strtolower($method);
+
+        if (strpos($method, 'attribute') === false &&
+            strpos($method, 'set') === false
+        ) {
+            return false;
+        }
+
+        if (!isset($arguments[0])) {
+            return false;
+        }
+
+        return $this->addAttribute($key, $arguments[0]);
     }
 }

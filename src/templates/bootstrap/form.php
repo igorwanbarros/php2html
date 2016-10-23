@@ -1,6 +1,6 @@
 <form action="<?php echo $form->getAction(); ?>"
       method="<?php echo $form->getMethod(); ?>"
-      <?php echo $form->getAttributes(); ?>>
+      <?php echo $form->renderAttributes(); ?>>
 
     <?php foreach ($form->getFields() as $field) :?>
         <?php if ($field->getType() == 'hidden'):?>

@@ -4,12 +4,13 @@ namespace Igorwanbarros\Php2Html\Form;
 
 use Igorwanbarros\Php2Html\AbstractHtml;
 use Igorwanbarros\Php2Html\TagHtml;
+use Igorwanbarros\Php2Html\ViewAbstract;
 
 /**
  * Class Field
  * @package Igorwanbarros\Php2Html\Form
  */
-abstract class Field
+abstract class Field extends ViewAbstract
 {
 
     /**

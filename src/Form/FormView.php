@@ -29,11 +29,6 @@ class FormView extends ViewAbstract
     /**
      * @var array
      */
-    protected $attributes;
-
-    /**
-     * @var array
-     */
     protected $fields;
 
 
@@ -126,62 +121,6 @@ class FormView extends ViewAbstract
     public function setAction($action)
     {
         $this->action = $action;
-
-        return $this;
-    }
-
-
-    /**
-     * @return array|string
-     */
-    public function getAttributes()
-    {
-        $string = '';
-
-        if (is_array($this->attributes)) {
-            foreach ($this->attributes as $key => $value) {
-                $string = "$key=\"$value\"";
-            }
-            $this->attributes = $string;
-        }
-
-        return $this->attributes;
-    }
-
-
-    /**
-     * @param $key
-     *
-     * @return null
-     */
-    public function getAttribute($key)
-    {
-        return array_key_exists($key, $this->attributes) ? $this->attributes[$key] : null;
-    }
-
-
-    /**
-     * @param $attributes
-     *
-     * @return $this
-     */
-    public function setAttributes($attributes)
-    {
-        $this->attributes = $attributes;
-
-        return $this;
-    }
-
-
-    /**
-     * @param $key
-     * @param $value
-     *
-     * @return $this
-     */
-    public function addAttribute($key, $value)
-    {
-        $this->attributes[$key] = $value;
 
         return $this;
     }

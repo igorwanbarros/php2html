@@ -11,6 +11,21 @@ class Helpers
 
     /**
      * @param string $string
+     * @param string $character
+     *
+     * @return string
+     */
+    public static function camelCase($string, $character = '-')
+    {
+        $string = preg_replace('/[A-Z]/', $character . '$0', $string);
+        $string = strtolower($string);
+
+        return ltrim($string, $character);
+    }
+
+
+    /**
+     * @param string $string
      *
      * @return string
      */

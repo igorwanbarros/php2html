@@ -21,7 +21,7 @@ $countDivFields = 0;
 ?>
 <form method="<?php echo $form->getMethod()?>"
       action="<?php echo $form->getAction()?>"
-      <?php echo $form->getAttributes()?>>
+      <?php echo $form->renderAttributes()?>>
 
     <div class="fields">
     <?php foreach ($form->getFields() as $field):?>
