@@ -120,7 +120,7 @@ abstract class ViewAbstract
 
         extract($this->getVars(), EXTR_OVERWRITE);
 
-        include_once $template;
+        include $template;
 
         $this->output = ob_get_contents();
 
