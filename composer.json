@@ -16,5 +16,6 @@
         "psr-4": {
             "Igorwanbarros\\Php2Html\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "stable"
 }
