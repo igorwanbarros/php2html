@@ -17,5 +17,5 @@
             "Igorwanbarros\\Php2Html\\": "src/"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "dev"
 }

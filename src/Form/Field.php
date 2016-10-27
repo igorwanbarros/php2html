@@ -46,12 +46,12 @@ abstract class Field extends ViewAbstract
     /**
      * @var string
      */
-    protected $tagName  = 'input';
+    protected $tagName = 'input';
 
     /**
      * @var int|string
      */
-    protected $size     = 4;
+    protected $size = 4;
 
     /**
      * @var string
@@ -60,22 +60,22 @@ abstract class Field extends ViewAbstract
 
 
     /**
-     * @param string        $name
-     * @param string        $label
-     * @param null|string   $value
+     * @param string      $name
+     * @param string      $label
+     * @param null|string $value
      */
     public function __construct($name, $label = '', $value = null)
     {
-        $this->name     = $name;
-        $this->value    = $value;
-        $this->label    = $label;
+        $this->name = $name;
+        $this->value = $value;
+        $this->label = $label;
     }
 
 
     /**
-     * @param string        $name
-     * @param string        $label
-     * @param null|string   $value
+     * @param string      $name
+     * @param string      $label
+     * @param null|string $value
      *
      * @return $this
      */
@@ -88,8 +88,12 @@ abstract class Field extends ViewAbstract
     /**
      * @return string
      */
-    public function render()
+    public function render($template = null)
     {
+        if ($template) {
+            return parent::render($template);
+        }
+
         $field = $this->_createFieldHtml();
 
         $this->_addAttributesFieldHtml($field);
@@ -244,42 +248,6 @@ abstract class Field extends ViewAbstract
     public function setValue($value)
     {
         $this->value = $value;
-
-        return $this;
-    }
-
-
-    /**
-     * @return array
-     */
-    public function getAttributes()
-    {
-        return $this->attributes;
-    }
-
-
-    /**
-     * @param string $key
-     * @param string $value
-     *
-     * @return $this
-     */
-    public function addAttribute($key, $value)
-    {
-        $this->attributes[$key] = $value;
-
-        return $this;
-    }
-
-
-    /**
-     * @param array $attributes
-     *
-     * @return $this
-     */
-    public function setAttributes($attributes)
-    {
-        $this->attributes = $attributes;
 
         return $this;
     }
