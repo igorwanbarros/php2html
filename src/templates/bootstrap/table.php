@@ -1,4 +1,3 @@
-
 <table class="<?php echo $table->getClassTable()?>">
     <thead>
         <tr>
@@ -50,3 +49,7 @@
     </tfoot>
     <?php endif;?>
 </table>
+
+<?php if (($paginator = $table->getPaginator())):?>
+    <?php echo $paginator;?>
+<?php endif;?>
