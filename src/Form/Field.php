@@ -46,12 +46,12 @@ abstract class Field extends ViewAbstract
     /**
      * @var string
      */
-    protected $tagName = 'input';
+    protected $tagName  = 'input';
 
     /**
      * @var int|string
      */
-    protected $size = 4;
+    protected $size     = 4;
 
     /**
      * @var string
@@ -60,22 +60,22 @@ abstract class Field extends ViewAbstract
 
 
     /**
-     * @param string      $name
-     * @param string      $label
-     * @param null|string $value
+     * @param string        $name
+     * @param string        $label
+     * @param null|string   $value
      */
     public function __construct($name, $label = '', $value = null)
     {
-        $this->name = $name;
-        $this->value = $value;
-        $this->label = $label;
+        $this->name     = $name;
+        $this->value    = $value;
+        $this->label    = $label;
     }
 
 
     /**
-     * @param string      $name
-     * @param string      $label
-     * @param null|string $value
+     * @param string        $name
+     * @param string        $label
+     * @param null|string   $value
      *
      * @return $this
      */
