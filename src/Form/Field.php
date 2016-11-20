@@ -295,4 +295,11 @@ abstract class Field extends ViewAbstract
 
         return $this;
     }
+
+    public function setRule($rules)
+    {
+        $this->rules = $rules;
+
+        return $this;
+    }
 }

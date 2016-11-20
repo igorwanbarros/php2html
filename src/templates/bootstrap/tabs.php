@@ -3,7 +3,20 @@
     <?php foreach ($tabs->getTitles() as $name => $title) : ?>
 
         <li class="<?php echo $tabs->getActive() == $name ? 'active' : ''; ?>">
-            <a data-toggle="tab" href="#<?php echo $name; ?>">
+            <?php $attributes = '';?>
+
+            <?php if (is_array($title) && array_key_exists('title', $title)):?>
+                <?php
+                    $myTitle = $title['title'];
+                    unset($title['title']);
+                ?>
+                <?php foreach ($title as $attr => $value):?>
+                    <?php $attributes .= "{$attr}=\"{$value}\" "?>
+                <?php endforeach;?>
+                <?php $title = $myTitle;?>
+            <?php endif;?>
+
+            <a data-toggle="tab" href="#<?php echo $name; ?>" <?php echo $attributes;?>>
                 <?php echo $title; ?>
             </a>
         </li>
