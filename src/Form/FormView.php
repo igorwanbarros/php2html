@@ -69,6 +69,7 @@ class FormView extends ViewAbstract
         if (is_array($data))
             $this->_fillArray($data);
 
+
         if (is_object($data))
             $this->_fillObject($data);
 

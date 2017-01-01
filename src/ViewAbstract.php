@@ -133,21 +133,29 @@ abstract class ViewAbstract
      */
     public function render($template = null)
     {
-        ob_start();
+        try {
+            ob_start();
 
-        $template = $template ? $template : $this->getBasePath() . $this->getTemplate();
+            $template = $template ? $template : $this->getBasePath() . $this->getTemplate();
 
-        if (!file_exists($template)) {
-            throw new \Exception("O caminho do template '{$template}' informado não foi encontrado :(");
+            if (!file_exists($template)) {
+                throw new \Exception("O caminho do template '{$template}' informado não foi encontrado :(");
+            }
+
+            extract($this->getVars(), EXTR_OVERWRITE);
+
+            include $template;
+
+            $this->output = ob_get_contents();
+
+            ob_end_clean();
+        } catch (\Exception $e) {
+            $this->output = "<div class=\"error__view\">" .
+                    "Não foi possível exibir a view solicitada.<br />" .
+                    "{$e->getMessage()}" .
+                "</div>";
         }
 
-        extract($this->getVars(), EXTR_OVERWRITE);
-
-        include $template;
-
-        $this->output = ob_get_contents();
-
-        ob_end_clean();
         return $this->output;
     }
 

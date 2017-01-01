@@ -208,4 +208,5 @@ class PanelView extends ViewAbstract
         $this->classPanel .= ' ' . $classPanel;
         return $this;
     }
+
 }

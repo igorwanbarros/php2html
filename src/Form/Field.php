@@ -302,4 +302,23 @@ abstract class Field extends ViewAbstract
 
         return $this;
     }
+
+
+    public function setLabelRequired($required = true)
+    {
+        if ($required) {
+            $requiredXs = '<span class="hidden-sm hidden-md hidden-lg label__required">*</span>';
+            $required = '<sup class="hidden-xs label__required">*obrigatório</sup>';
+            return $this->setLabel($this->getLabel() . $requiredXs . $required);
+        }
+
+        $label = $this->getLabel();
+
+        if (($pos = strpos($label, '<')) !== false) {
+            $label = substr($label, 0, $pos);
+            return $this->setLabel($label);
+        }
+
+        return $this;
+    }
 }

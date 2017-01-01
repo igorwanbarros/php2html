@@ -15,7 +15,7 @@ class Html extends Field
     /**
      * @var string
      */
-    protected $type = '';
+    protected $type = 'hidden';
 
     /**
      * @var string

@@ -2,6 +2,8 @@
 
 namespace Igorwanbarros\Php2Html\Dropdown;
 
+use Igorwanbarros\Php2Html\ViewAbstract;
+
 /**
  * Class DropdownView
  * @package Igorwanbarros\Php2Html\Dropdown
