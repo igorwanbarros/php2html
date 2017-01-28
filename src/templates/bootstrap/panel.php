@@ -1,6 +1,6 @@
 <div class="panel <?php echo $panel->getClassPanel()?>">
-    <div class="panel-heading box-header">
-        <h3 class="panel-title box-title"><?php echo $panel->getTitle()?></h3>
+    <div class="<?php echo $panel->getClassPanelHeading(); ?>">
+        <h3 class="<?php echo $panel->getClassPanelHeadingTitle(); ?>"><?php echo $panel->getTitle()?></h3>
         <?php if ($panel->isBoxToolsCollapse() || $panel->isBoxToolsRemove()): ?>
             <div class="box-tools pull-right">
             <?php if ($panel->isBoxToolsCollapse()): ?>
@@ -13,13 +13,13 @@
         <?php endif; ?>
     </div>
 
-    <div class="panel-body box-body">
+    <div class="<?php echo $panel->getClassPanelBody(); ?>">
         <?php echo $panel->getBody()?>
     </div>
 
 
     <?php if ($panel->getFooter()):?>
-    <div class="panel-footer box-footer">
+    <div class="<?php echo $panel->getClassPanelFooter(); ?>">
         <?php echo $panel->getFooter()?>
     </div>
     <?php endif?>

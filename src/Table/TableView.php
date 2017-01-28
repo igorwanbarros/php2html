@@ -78,6 +78,7 @@ class TableView extends ViewAbstract
      */
     public function __construct(array $headers, $collection = null)
     {
+        parent::__construct();
         $this->headers = $headers;
         $this->setCollection($collection);
     }

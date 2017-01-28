@@ -66,6 +66,7 @@ abstract class Field extends ViewAbstract
      */
     public function __construct($name, $label = '', $value = null)
     {
+        parent::__construct();
         $this->name     = $name;
         $this->value    = $value;
         $this->label    = $label;

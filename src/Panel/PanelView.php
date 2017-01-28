@@ -46,6 +46,26 @@ class PanelView extends ViewAbstract
      */
     protected $classPanel = ViewAbstract::PANEL_BOOTSTRAP_DEFAULT;
 
+    /**
+     * @var string
+     */
+    protected $classPanelHeading = 'panel-heading';
+
+    /**
+     * @var string
+     */
+    protected $classPanelHeadingTitle = 'panel-title';
+
+    /**
+     * @var string
+     */
+    protected $classPanelBody = 'panel-body';
+
+    /**
+     * @var string
+     */
+    protected $classPanelFooter = 'panel-footer';
+
 
     /**
      * @param string|ViewAbstract $title
@@ -54,6 +74,7 @@ class PanelView extends ViewAbstract
      */
     public function __construct($title = null, $body = null, $footer = null)
     {
+        parent::__construct();
         $this->title    = $title;
         $this->body     = $body;
         $this->footer   = $footer;
@@ -209,4 +230,87 @@ class PanelView extends ViewAbstract
         return $this;
     }
 
+
+    /**
+     * @return string
+     */
+    public function getClassPanelBody()
+    {
+        return $this->classPanelBody;
+    }
+
+
+    /**
+     * @param $classPanelBody
+     *
+     * @return $this
+     */
+    public function setClassPanelBody($classPanelBody)
+    {
+        $this->classPanelBody = $classPanelBody;
+        return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getClassPanelFooter()
+    {
+        return $this->classPanelFooter;
+    }
+
+
+    /**
+     * @param $classPanelFooter
+     *
+     * @return $this
+     */
+    public function setClassPanelFooter($classPanelFooter)
+    {
+        $this->classPanelFooter = $classPanelFooter;
+        return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getClassPanelHeading()
+    {
+        return $this->classPanelHeading;
+    }
+
+
+    /**
+     * @param $classPanelHeading
+     *
+     * @return $this
+     */
+    public function setClassPanelHeading($classPanelHeading)
+    {
+        $this->classPanelHeading = $classPanelHeading;
+        return $this;
+    }
+
+
+    /**
+     * @return string
+     */
+    public function getClassPanelHeadingTitle()
+    {
+        return $this->classPanelHeadingTitle;
+    }
+
+
+    /**
+     * @param $classPanelHeadingTitle
+     *
+     * @return $this
+     */
+    public function setClassPanelHeadingTitle($classPanelHeadingTitle)
+    {
+        $this->classPanelHeadingTitle = $classPanelHeadingTitle;
+        return $this;
+    }
 }

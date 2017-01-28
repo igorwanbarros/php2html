@@ -39,6 +39,7 @@ class FormView extends ViewAbstract
      */
     public function __construct($action = '', $method = 'GET', array $attributes = [])
     {
+        parent::__construct();
         $this->action       = $action;
         $this->method       = $method;
         $this->attributes   = $attributes;

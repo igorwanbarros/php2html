@@ -52,6 +52,78 @@ abstract class ViewAbstract
      */
     protected $attributes;
 
+    /**
+     * @var array
+     */
+    protected static $personalizations = [];
+
+
+    public function __construct()
+    {
+        $this->_initPersonalizationByClass();
+    }
+
+
+    protected function _initPersonalizationByClass()
+    {
+        if (array_key_exists($class = get_called_class(), self::$personalizations)) {
+            return;
+        }
+
+        self::$personalizations[$class] = [];
+    }
+
+
+    /**
+     * @return array
+     */
+    public static function getPersonalizations()
+    {
+        return self::$personalizations;
+    }
+
+
+    /**
+     * @param array $personalizations
+     */
+    public static function setPersonalizations(array $personalizations)
+    {
+        self::$personalizations = array_merge(self::$personalizations, $personalizations);
+    }
+
+
+    /**
+     * @param $propertie
+     * @param $value
+     */
+    public static function addPersonalization($propertie, $value)
+    {
+        self::$personalizations[get_called_class()][$propertie] = $value;
+    }
+
+
+    protected function _personalizeView()
+    {
+        $class = get_called_class();
+
+        if (!array_key_exists($class, self::$personalizations)) {
+            return;
+        }
+
+        $attributes = self::$personalizations[$class];
+
+        foreach ($attributes as $key => $value) {
+            $key = ucwords(str_replace(['_', '-'], ' ', $key));
+            $key = lcfirst(str_replace(' ', '', $key));
+
+            if (!property_exists($class, $key)) {
+                continue;
+            }
+
+            $this->{$key} = $value;
+        }
+    }
+
 
     /**
      * @return $this
@@ -133,6 +205,7 @@ abstract class ViewAbstract
      */
     public function render($template = null)
     {
+        $this->_personalizeView();
         try {
             ob_start();
 

@@ -32,6 +32,7 @@ class BreadcrumbsView extends ViewAbstract
      */
     public function __construct(array $itens = [])
     {
+        parent::__construct();
         $this->setItens($itens);
         $this->addAttribute('class', 'breadcrumb');
     }

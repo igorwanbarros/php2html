@@ -40,6 +40,7 @@ class LabelView extends ViewAbstract
 
     public function __construct($label, $class = self::BOOTSTRAP_DEFAULT)
     {
+        parent::__construct();
         $this->label = $label;
         $this->class = $class;
     }

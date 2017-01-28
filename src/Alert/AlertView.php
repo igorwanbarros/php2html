@@ -41,6 +41,7 @@ class AlertView extends ViewAbstract
      */
     public function __construct($text, $class = self::BOOTSTRAP_SUCCESS)
     {
+        parent::__construct();
         $this->text = $text;
         $this->addAttribute('class', $class);
     }

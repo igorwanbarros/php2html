@@ -52,6 +52,7 @@ class TabsView extends ViewAbstract
      */
     public function __construct(array $titles = [], array $contents = [])
     {
+        parent::__construct();
         $this->setTitles($titles);
         $this->setContents($contents);
     }
