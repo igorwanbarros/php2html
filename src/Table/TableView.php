@@ -84,6 +84,15 @@ class TableView extends ViewAbstract
     }
 
 
+    public function checkHeader($header = 'id', $begin = true)
+    {
+        $check = '<input type="checkbox" class="check-all" />';
+
+        unset($this->headers[$header]);
+        return $this->addHeader($header, $check, $begin);
+    }
+
+
     /**
      * @param $row
      *
