@@ -162,7 +162,7 @@ class FormView extends ViewAbstract
     /**
      * @param $name
      *
-     * @return null|bool
+     * @return null|Field
      */
     public function getField($name)
     {
