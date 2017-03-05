@@ -322,4 +322,21 @@ abstract class Field extends ViewAbstract
 
         return $this;
     }
+
+
+    /**
+     * @param TagHtml $field
+     *
+     * @return TagHtml
+     */
+    protected function _setPersonalizationAttribute(TagHtml $field)
+    {
+        if (array_key_exists($class = get_called_class(), static::$personalizations)) {
+            foreach (static::$personalizations[$class] as $key => $value) {
+                $field->addAttributeRaw($key, $value);
+            }
+        }
+
+        return $field;
+    }
 }

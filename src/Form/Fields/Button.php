@@ -43,6 +43,6 @@ class Button extends Field
             ->addAttributeRaw('type', $this->type)
             ->addAttributeRaw('name', $this->name);
 
-        return $field;
+        return $this->_setPersonalizationAttribute($field);
     }
 }
