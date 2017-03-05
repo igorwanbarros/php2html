@@ -32,7 +32,7 @@
                                         <?php echo $row->getDataValue($key)?>
                                     <?php else:?>
                                         <a href="<?php echo $row->getLineLink()?>">
-                                            <?php echo $row->getData()->{$key}?>
+                                            <?php echo $row->getValueKey($key)?>
                                         </a>
                                     <?php endif;?>
                                 </td>

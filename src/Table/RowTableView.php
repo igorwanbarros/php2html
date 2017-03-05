@@ -141,4 +141,21 @@ class RowTableView
 
         return $this;
     }
+
+
+    public function getValueKey($key)
+    {
+        $value = $this->data->{$key};
+
+        if (strpos($key, '.') !== false) {
+            $fields = explode('.', $key);
+            $value = $this->data;
+
+            foreach ($fields as $campo) {
+                $value = $value->{$campo};
+            }
+        }
+
+        return $value;
+    }
 }
