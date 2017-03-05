@@ -79,7 +79,7 @@ abstract class ViewAbstract
      */
     public static function getPersonalizations()
     {
-        return self::$personalizations;
+        return self::$personalizations[get_called_class()];
     }
 
 
