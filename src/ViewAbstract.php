@@ -79,7 +79,9 @@ abstract class ViewAbstract
      */
     public static function getPersonalizations()
     {
-        return self::$personalizations[get_called_class()];
+        return array_key_exists($class = get_called_class(), self::$personalizations)
+            ? self::$personalizations[$class]
+            : [];
     }
 
 
