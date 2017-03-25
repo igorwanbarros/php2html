@@ -378,7 +378,15 @@ abstract class ViewAbstract
             return $this->setAttributes($key);
         }
 
-        $this->attributes[Helpers::camelCase($key)] = $value;
+        $key = Helpers::camelCase($key);
+
+        if (is_array($this->attributes) && array_key_exists($key, $this->attributes)) {
+            $this->attributes[$key] .= " $value";
+
+            return $this;
+        }
+
+        $this->attributes[$key] = $value;
 
         return $this;
     }
