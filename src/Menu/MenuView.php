@@ -55,6 +55,40 @@ class MenuView extends ViewAbstract
 
 
     /**
+     * @param $itemName
+     *
+     * @return $this
+     */
+    public function removeItemMenu($itemName)
+    {
+        if (is_array($itemName)) {
+            foreach ($itemName as $item) {
+                $this->removeItemMenu($item);
+            }
+
+            return $this;
+        }
+
+        if (is_scalar($itemName) && array_key_exists($itemName, $this->itensMenu)) {
+            unset($this->itensMenu[$itemName]);
+        }
+
+        return $this;
+    }
+
+
+    /**
+     * @return $this
+     */
+    public function clearItens()
+    {
+        $this->itensMenu = [];
+
+        return $this;
+    }
+
+
+    /**
      * @param string   $subNivelName
      * @param ItemMenu $itemMenu
      *
