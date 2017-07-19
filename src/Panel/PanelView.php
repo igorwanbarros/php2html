@@ -66,6 +66,11 @@ class PanelView extends ViewAbstract
      */
     protected $classPanelFooter = 'panel-footer';
 
+    /**
+     * @var bool
+     */
+    public $isPanelClass = true;
+
 
     /**
      * @param string|ViewAbstract $title
@@ -202,7 +207,7 @@ class PanelView extends ViewAbstract
      */
     public function getClassPanel()
     {
-        return $this->classPanel;
+        return $this->isPanelClass ? "panel $this->classPanel" : $this->classPanel;
     }
 
 
