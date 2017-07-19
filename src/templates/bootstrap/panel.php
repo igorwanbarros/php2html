@@ -1,4 +1,4 @@
-<div class="panel <?php echo $panel->getClassPanel()?>">
+<div class="<?php echo $panel->getClassPanel()?>">
     <div class="<?php echo $panel->getClassPanelHeading(); ?>">
         <h3 class="<?php echo $panel->getClassPanelHeadingTitle(); ?>"><?php echo $panel->getTitle()?></h3>
         <?php if ($panel->isBoxToolsCollapse() || $panel->isBoxToolsRemove()): ?>
