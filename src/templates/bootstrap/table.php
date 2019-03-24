@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 col-sm-12">
         <div class="table-responsive">
             <table class="<?php echo $table->getClassTable()?>">
                 <thead>
