@@ -48,6 +48,21 @@ class RowTableView
      */
     public function getDataValue($header)
     {
+        if (strpos($header, '.') !== false) {
+            $fields = explode('.', $header);
+            $value = $this->data;
+
+            foreach ($fields as $campo) {
+                if (isset($value->{$campo})) {
+                    $value = $value->{$campo};
+                } else {
+                    $value = '';
+                }
+            }
+
+            return $value;
+        }
+
         return isset($this->data->{$header}) ? $this->data->{$header} : '';
     }
 
