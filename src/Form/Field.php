@@ -123,7 +123,7 @@ abstract class Field extends ViewAbstract
      */
     protected function _addAttributesFieldHtml(AbstractHtml $field)
     {
-        if (count($this->attributes) > 0) {
+        if (is_array($this->attributes) && count($this->attributes) > 0) {
             foreach ($this->attributes as $key => $value) {
                 $field->addAttributeRaw($key, $value);
             }
