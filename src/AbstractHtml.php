@@ -9,7 +9,7 @@ abstract class AbstractHtml
         //''    => '',
     ];
 
-    protected $attributes   = '';
+    protected $attributes   = [];
     protected $output       = '';
 
 
@@ -44,7 +44,7 @@ abstract class AbstractHtml
 
     public function addAttributeRaw($key, $value)
     {
-        if (sizeof($this->attributes) > 0)
+        if (is_array($this->attributes) && sizeof($this->attributes) > 0)
             return $this->addAttribute($key, $value);
 
         if (is_array($this->attributes))
