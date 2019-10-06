@@ -15,9 +15,14 @@ class RowTableView
     protected $headers;
 
     /**
-     * @var array
+     * @var string
      */
     protected $attributes;
+
+    /**
+     * @var array
+     */
+    protected $attributesByKey = [];
 
     /**
      * @var mixed
@@ -64,6 +69,47 @@ class RowTableView
         }
 
         return isset($this->data->{$header}) ? $this->data->{$header} : '';
+    }
+
+
+    /**
+     * @param $columnName
+     * @param $key
+     * @param $value
+     * @return $this
+     */
+    public function addColumnAttributes($columnName, $key, $value)
+    {
+        if (!isset($this->attributesByKey[$columnName])) {
+            $this->attributesByKey[$columnName] = '';
+        }
+        $this->attributesByKey[$columnName] .= " {$key}=\"{$value}\"";
+
+        return $this;
+    }
+
+    /**
+     * @param $columnName
+     * @return $this
+     */
+    public function clearColumnAttribute($columnName)
+    {
+        $this->attributesByKey[$columnName] = '';
+
+        return $this;
+    }
+
+
+    /**
+     * @param $columnName
+     * @param null $default
+     * @return mixed|null
+     */
+    public function getColumnAttributes($columnName, $default = null)
+    {
+        return isset($this->attributesByKey[$columnName])
+            ? $this->attributesByKey[$columnName]
+            : $default;
     }
 
 
