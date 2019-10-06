@@ -27,7 +27,7 @@
                         <?php $row->addAttributes('class', "column-{$key} {$table->getClassTd()}")?>
                         <tr>
                         <?php foreach($table->getHeaders() as $key => $header):?>
-                                <td <?php echo $row->getAttributes()?>>
+                                <td <?php echo $row->getColumnAttributes($key)?>>
                                     <?php if (!$row->getLineLink()):?>
                                         <?php echo $row->getDataValue($key)?>
                                     <?php else:?>
